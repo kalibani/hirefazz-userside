@@ -27,6 +27,7 @@ export default function CameraTools({
         right: 6,
         zIndex: 1,
         gap: 16,
+        top: 35,
       }}
     >
       <IconButton
@@ -43,42 +44,15 @@ export default function CameraTools({
           )
         }
         iosName={"arrow.triangle.2.circlepath.camera"}
-        androidName="close"
+        androidName="sync"
         width={25}
         height={21}
       />
-      <IconButton
-        onPress={() =>
-          setCameraFlash((prevValue) => (prevValue === "off" ? "on" : "off"))
-        }
-        iosName={cameraFlash === "on" ? "bolt.circle" : "bolt.slash.circle"}
-        androidName="close"
-      />
+
       <IconButton
         onPress={() => {}}
         iosName={"speaker"}
-        // iosName={"speaker.slash"}
         androidName="volume-high"
-      />
-      <IconButton
-        onPress={() => {
-          // increment by .01
-          if (cameraZoom < 1) {
-            setCameraZoom((prevValue) => prevValue + 0.01);
-          }
-        }}
-        iosName={"plus.magnifyingglass"}
-        androidName="close"
-      />
-      <IconButton
-        onPress={() => {
-          // decrement by .01
-          if (cameraZoom > 0) {
-            setCameraZoom((prevValue) => prevValue - 0.01);
-          }
-        }}
-        iosName={"minus.magnifyingglass"}
-        androidName="close"
       />
     </View>
   );

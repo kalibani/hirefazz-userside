@@ -4,6 +4,7 @@ import IconButton from "./IconButton";
 import { Link } from "expo-router";
 import { ThemedText } from "./ThemedText";
 import { CameraMode } from "expo-camera";
+import { Colors } from "@/constants/Colors";
 
 interface BottomRowToolsProps {
   cameraMode: CameraMode;
@@ -23,6 +24,7 @@ export default function BottomRowTools({
           <ThemedText
             style={{
               fontWeight: cameraMode === "picture" ? "bold" : "100",
+              color: Colors.light.background,
             }}
           >
             Snap
@@ -32,6 +34,7 @@ export default function BottomRowTools({
           <ThemedText
             style={{
               fontWeight: cameraMode === "video" ? "bold" : "100",
+              color: Colors.light.background,
             }}
           >
             Video

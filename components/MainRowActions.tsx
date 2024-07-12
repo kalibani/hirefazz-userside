@@ -8,6 +8,9 @@ import {
   View,
 } from "react-native";
 import { Asset, getAlbumsAsync, getAssetsAsync } from "expo-media-library";
+
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 import { Image } from "expo-image";
 import { CameraMode } from "expo-camera";
 import { Colors } from "@/constants/Colors";
@@ -33,7 +36,7 @@ export default function MainRowActions({
 
     // Recents album
     const albumAssets = await getAssetsAsync({
-      album: fetchedAlbums.find((album) => album.title === "Recentsd"),
+      album: fetchedAlbums.find((album) => album.title === "Recents"),
       mediaType: "photo",
       sortBy: "creationTime",
       first: 4,
@@ -72,38 +75,34 @@ export default function MainRowActions({
           }
           size={90}
           type="hierarchical"
-          tintColor={isRecording ? Colors.light.background : "white"}
+          tintColor={isRecording ? Colors.light.hireFazzPrimary : "white"}
           animationSpec={{
             effect: {
               type: isRecording ? "pulse" : "bounce",
             },
             repeating: isRecording,
           }}
-          // fallback={} TODO: Add a fallback for android
+          fallback={
+            <Ionicons
+              size={90}
+              name={
+                cameraMode === "picture"
+                  ? "radio-button-off"
+                  : isRecording
+                  ? "radio-button-on"
+                  : "radio-button-off"
+              }
+              color={isRecording ? Colors.light.hireFazzPrimary : "white"}
+            />
+          }
         />
       </TouchableOpacity>
-      <ScrollView
-        horizontal
-        contentContainerStyle={{ gap: 2 }}
-        showsHorizontalScrollIndicator={false}
-      >
-        {[0, 1, 2, 4].map((item) => (
-          <SymbolView
-            key={item}
-            name="face.dashed"
-            size={40}
-            type="hierarchical"
-            tintColor={"white"}
-            // fallback={} TODO: Add a fallback for android
-          />
-        ))}
-      </ScrollView>
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: 290,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

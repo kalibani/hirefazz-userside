@@ -22,7 +22,7 @@ import VideoViewComponent from "@/components/VideoView";
 
 export default function HomeScreen() {
   const cameraRef = React.useRef<CameraView>(null);
-  const [cameraMode, setCameraMode] = React.useState<CameraMode>("picture");
+  const [cameraMode, setCameraMode] = React.useState<CameraMode>("video");
   const [cameraTorch, setCameraTorch] = React.useState<boolean>(false);
   const [cameraFlash, setCameraFlash] = React.useState<FlashMode>("off");
   const [cameraFacing, setCameraFacing] = React.useState<"front" | "back">(
